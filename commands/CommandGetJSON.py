@@ -13,9 +13,10 @@ class CommandGetJSON(messagesInterface.MessageInterface):
         pass
 
     def execute(self) -> Command:
+        #print(self.command)
         #oroginal command ->self.command
         tmp:ReturningData = ReturningData()
-        self.command.msgPayload=tmp.getDataFormatJSON()
-        answer = Command(tmp)
-
+        tmp.getDataFormatJSON()
+        self.command.msgPayload=tmp.datapayload
+        answer = self.command
         return answer

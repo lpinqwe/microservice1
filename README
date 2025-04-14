@@ -1,0 +1,8 @@
+
+this microservice allow to get json, xml formatted data from file csv file
+also json from csv,json,xml
+
+it send json-message with data from file inside payload
+it send message in queue wich have msgID name
+
+if connection is broken or somenthing unexpected happens it return message to queue

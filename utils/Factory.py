@@ -1,11 +1,13 @@
-from commands import TestCommand
+from commands.TestCommand import TestCommand
+from commands.CommandGetXML import CommandGetXML
+from commands.CommandGetJSON import CommandGetJSON
 from interfaces.CommandStructure import Command
 
 class Factory:
     def __init__(self):
         self.commands = {
-            'getjson': TestCommand,
-            'getxml': TestCommand,
+            'getjson': CommandGetJSON,
+            'getxml': CommandGetXML,
             'test': TestCommand
 
         }

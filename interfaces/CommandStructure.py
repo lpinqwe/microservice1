@@ -12,7 +12,9 @@ class Command:
     #"msgPayload":""
     # }
     def __init__(self, string_format_command):
-        data:json = json.load(string_format_command)
+        print(f"Попытка разобрать команду: {string_format_command}")  # Логируем строку
+
+        data = json.loads(string_format_command)
         self.msgCommand=data['msgCommand']
         self.msgID = data['msgID']
         self.msgPayload = data['msgPayload']
@@ -22,7 +24,7 @@ class Command:
             'msgPayload': self.msgPayload,
             'msgCommand': self.msgCommand
         }
-        return map
+        return json.dumps(map)
 
     def __str__(self):
         map = {

@@ -12,10 +12,7 @@ import decor.singletone
 class ReturningData:
     datapayload: str = None
     state: str = None
-    fromToReturn = {
-        "dataPayload": datapayload,
-        "state": state
-    }
+
 
     def __init__(self, path_to_file):
         self.path = path_to_file
@@ -49,7 +46,7 @@ class ReturningData:
 
     def _unsupported(self):
         self.state = "unsupported"
-        self.datapayload = json.dumps(self.fromToReturn)
+        self.datapayload = "usupported"
         self.state = "ok"
 
     def getDataFormatJSON(self) -> json:
@@ -62,7 +59,11 @@ class ReturningData:
                 self._getXML()
             case _:
                 self._unsupported()
-        return json.dumps(self.fromToReturn)
+        fromToReturn = {
+            "dataPayload": self.datapayload,
+            "state": self.state
+        }
+        return json.dumps(fromToReturn)
 
     def getDataFormatXML(self) -> json:
         f = open(self.path)
@@ -73,5 +74,8 @@ class ReturningData:
             data.append(row)
         f.close()
         self.datapayload = str(data)
-
-        return json.dumps(self.fromToReturn)
+        fromToReturn = {
+            "dataPayload": self.datapayload,
+            "state": self.state
+        }
+        return json.dumps(fromToReturn)

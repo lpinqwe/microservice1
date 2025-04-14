@@ -14,9 +14,10 @@ class CommandGetXML(messagesInterface.MessageInterface):
         pass
 
     def execute(self) -> Command:
-        #oroginal command ->self.command
-        tmp:ReturningData = ReturningData()
-        self.command.msgPayload=tmp.getDataFormatXML()
-        answer = Command(tmp)
-
+        # print(self.command)
+        # oroginal command ->self.command
+        tmp: ReturningData = ReturningData()
+        tmp.getDataFormatXML()
+        self.command.msgPayload = tmp.datapayload
+        answer = self.command
         return answer

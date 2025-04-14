@@ -1,6 +1,7 @@
 import os
 import os
 import threading
+import uuid
 
 import pika
 
@@ -55,8 +56,10 @@ class RabbitRabbit:
             print(tmp)
 
     def sendMessage(self, msg: Command):
+        print(msg.msgID)
+        self.channel.queue_declare(queue=msg.msgID, durable=False)
         self.channel.basic_publish(
-            exchange='direct',
+            exchange='',
             routing_key=msg.msgID,  # имя очереди
             body=msg.get(),
             mandatory=True
