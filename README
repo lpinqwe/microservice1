@@ -6,3 +6,19 @@ it send json-message with data from file inside payload
 it send message in queue wich have msgID name
 
 if connection is broken or somenthing unexpected happens it return message to queue
+-------------------
+
+замечания по структуре:
+- нет файла гитИгнор
+- в проекте есть каталог .idea
+- проект выполнен как набор скриптов. должен быть как приложение(см организацию модулей)
+- нет файла зависимостей
+- нет докер файла
+- нет докер компоуза
+- нет тестов
+- файл sources кладется в docs
+- файл данных в папку data
+- все исходники в папку src
+- нет метрик
+- нет телеметрии
+- нет здоровья

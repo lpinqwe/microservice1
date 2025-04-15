@@ -14,7 +14,7 @@ class ReturningData:
     state: str = None
 
 
-    def __init__(self, path_to_file):
+    def __init__(self, path_to_file): #todo неформатированный код
         self.path = path_to_file
         self._getExt()
         None
@@ -22,7 +22,7 @@ class ReturningData:
     def _getJSON(self):
         f = open(self.path, "r")
         self.datapayload = f.read()
-        # os.path.getsize('path_to_your_file')
+        # os.path.getsize('path_to_your_file') #todo коментарии старого кода без туду и описания зачем оставлен
         # print('Размер файла:', file_size, 'байт')
         self.state = "ok"
         None
@@ -49,7 +49,7 @@ class ReturningData:
         self.datapayload = "usupported"
         self.state = "ok"
 
-    def getDataFormatJSON(self) -> json:
+    def getDataFormatJSON(self) -> json: #todo несоблюдение конвенции
         match self.ext:
             case ".json":
                 self._getJSON()
@@ -59,13 +59,13 @@ class ReturningData:
                 self._getXML()
             case _:
                 self._unsupported()
-        fromToReturn = {
+        fromToReturn = { #todo несоблюдение конвенции
             "dataPayload": self.datapayload,
             "state": self.state
         }
         return json.dumps(fromToReturn)
 
-    def getDataFormatXML(self) -> json:
+    def getDataFormatXML(self) -> json: #todo несоблюдение конвенции
         f = open(self.path)
         csv_f = csv.reader(f)
         data = []

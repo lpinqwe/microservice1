@@ -17,6 +17,7 @@ class RabbitRabbit:
         self.factory = factory
         self.properties = pika.BasicProperties(expiration='60000')
         self.credentials = pika.PlainCredentials(username=os.getenv('RABBITMQ_USER'.upper(), 'guest'),
+                                                 #todo настройки через отдельный класс или константы. иначе не понять что где используется
                                                  password=os.getenv('RABBITMQ_pass'.upper(), 'guest'))
 
         self.connection_param = pika.ConnectionParameters(host=os.getenv('rabbit_localhost'.upper(), '127.0.0.1'),
@@ -52,11 +53,11 @@ class RabbitRabbit:
             tmp = body.decode()
 
             tmp = Command(tmp)
-            print(e)
+            print(e) #todo логирование
             print(tmp)
 
     def sendMessage(self, msg: Command):
-        print(msg.msgID)
+        print(msg.msgID) #todo
         self.channel.queue_declare(queue=msg.msgID, durable=False)
         self.channel.basic_publish(
             exchange='',

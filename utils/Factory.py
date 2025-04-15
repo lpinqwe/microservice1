@@ -6,12 +6,12 @@ from interfaces.CommandStructure import Command
 class Factory:
     def __init__(self):
         self.commands = {
-            'getjson': CommandGetJSON,
+            'getjson': CommandGetJSON, #todo стровоые константы
             'getxml': CommandGetXML,
             'test': TestCommand
 
         }
-    def execute_command(self,command:Command)->Command:
+    def execute_command(self,command:Command)->Command: #todo форматирование
         try:
             cmd = command.msgCommand.lower()
             command_to_execute = self.commands.get(cmd)
