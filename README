@@ -12,7 +12,7 @@ if connection is broken or somenthing unexpected happens it return message to qu
 - нет файла гитИгнор --added
 - в проекте есть каталог .idea --deleted
 - проект выполнен как набор скриптов. должен быть как приложение(см организацию модулей)--changed
-- нет файла зависимостей
+- нет файла зависимостей --add
 - нет докер файла
 - нет докер компоуза
 - нет тестов --added
