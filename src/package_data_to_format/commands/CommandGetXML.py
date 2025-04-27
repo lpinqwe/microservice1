@@ -2,9 +2,9 @@ import json
 
 from _distutils_hack import override
 
-from DataConverter.DataManager import ReturningData
-from interfaces import messagesInterface
-from interfaces.CommandStructure import Command
+from src.package_data_to_format.DataConverter.DataManager import ReturningData
+from src.package_data_to_format.interfaces import messagesInterface
+from src.package_data_to_format.interfaces.CommandStructure import Command
 
 class CommandGetXML(messagesInterface.MessageInterface):
     """

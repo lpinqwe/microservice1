@@ -4,9 +4,9 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import os
 
-from DataConverter.DataManager import ReturningData
-from utils.Factory import Factory
-from utils.RabbitRabbit import RabbitRabbit
+from src.package_data_to_format.DataConverter.DataManager import ReturningData
+from src.package_data_to_format.utils.Factory import Factory
+from src.package_data_to_format.utils.RabbitRabbit import RabbitRabbit
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

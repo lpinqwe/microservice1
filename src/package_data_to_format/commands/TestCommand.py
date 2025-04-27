@@ -1,18 +1,15 @@
+from src.package_data_to_format.DataConverter.DataManager import ReturningData
+from src.package_data_to_format.interfaces import messagesInterface
+from src.package_data_to_format.interfaces.CommandStructure import Command
+from src.package_data_to_format.utils.Logger import LoggerAll as log
 
-import json
-import os
 
-from _distutils_hack import override
-from  utils.Logger import LoggerAll as log
-from DataConverter.DataManager import ReturningData
-from interfaces.CommandStructure import Command
-from interfaces import messagesInterface
 class TestCommand(messagesInterface.MessageInterface):
     """***this command will return TEST ***"""
 
     def __init__(self, map):
         super().__init__(map)
-        #print(map)
+        # print(map)
         log.logger.info(map)
         pass
 

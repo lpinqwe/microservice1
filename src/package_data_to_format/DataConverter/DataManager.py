@@ -5,10 +5,10 @@ import os.path
 import pandas as pd
 import xmltodict
 
-import decor.singletone
+import src.package_data_to_format.decor.singletone
 
 
-@decor.singletone.singleton
+@src.package_data_to_format.decor.singletone.singleton
 class ReturningData:
     datapayload: str = None
     state: str = None

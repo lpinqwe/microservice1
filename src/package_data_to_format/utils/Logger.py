@@ -1,9 +1,9 @@
 import logging
 
-import decor
+import src.package_data_to_format.decor
 
 
-@decor.singletone
+@src.package_data_to_format.decor.singletone
 class LoggerAll:
     logging.basicConfig(filename="newfile.log",
                         format='%(asctime)s %(message)s',

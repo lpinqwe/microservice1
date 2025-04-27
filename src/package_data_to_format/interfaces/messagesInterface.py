@@ -1,6 +1,6 @@
 import json
 from abc import abstractmethod,ABC
-from interfaces.CommandStructure import Command
+from src.package_data_to_format.interfaces.CommandStructure import Command
 class MessageInterface(ABC):
 
 

@@ -1,8 +1,8 @@
-from commands.CommandGetJSON import CommandGetJSON
-from commands.CommandGetXML import CommandGetXML
-from commands.TestCommand import TestCommand
-from interfaces.CommandStructure import Command
-from utils.Logger import LoggerAll as log
+from src.package_data_to_format.commands.CommandGetJSON import CommandGetJSON
+from src.package_data_to_format.commands.CommandGetXML import CommandGetXML
+from src.package_data_to_format.commands.TestCommand import TestCommand
+from src.package_data_to_format.interfaces.CommandStructure import Command
+from src.package_data_to_format.utils.Logger import LoggerAll as log
 
 
 class Factory:

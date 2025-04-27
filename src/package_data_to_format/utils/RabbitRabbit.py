@@ -1,17 +1,15 @@
 import os
-import os
 import threading
-import uuid
-from utils.Logger import LoggerAll as log
+from src.package_data_to_format.utils.Logger import LoggerAll as log
 import pika
 
-import decor.singletone
-from interfaces.CommandStructure import Command
-from utils.Factory import Factory
+import src.package_data_to_format.decor.singletone
+from src.package_data_to_format.interfaces.CommandStructure import Command
+from src.package_data_to_format.utils.Factory import Factory
 
-from config.RabbitMQConfig import RabbitMQConfig as RMQC
+from src.package_data_to_format.config.RabbitMQConfig import RabbitMQConfig as RMQC
 
-@decor.singletone.singleton
+@src.package_data_to_format.decor.singletone.singleton
 class RabbitRabbit:
 
     def __init__(self, factory: Factory):

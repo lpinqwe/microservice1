@@ -1,7 +1,7 @@
 import json
 from dataclasses import dataclass
 
-from utils.Logger import LoggerAll as log
+from src.package_data_to_format.utils.Logger import LoggerAll as log
 
 
 @dataclass
