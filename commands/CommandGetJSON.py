@@ -5,18 +5,21 @@ from interfaces.CommandStructure import Command
 
 
 class CommandGetJSON(messagesInterface.MessageInterface):
+    """
+    CommandGetJSON: команда для возврата данных в формате JSON.
 
+    Описание:
+    - Принимает объект команды (`mapa`).
+    - Обрабатывает данные и возвращает их в формате JSON.
+    """
     def __init__(self, mapa:Command):
 
-        """***this command will return json format from data***""" #todo описание уровня класса
         super().__init__(mapa)
         pass
 
     def execute(self) -> Command:
-        #print(self.command)
-        #oroginal command ->self.command#todo комменты
         tmp:ReturningData = ReturningData()
-        tmp.getDataFormatJSON()
+        tmp.get_data_formatJSON()
         self.command.msgPayload=tmp.datapayload #todo форматирование
         answer = self.command
         return answer

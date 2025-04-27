@@ -1,28 +1,36 @@
-from dataclasses import dataclass
 import json
+from dataclasses import dataclass
+
+from utils.Logger import LoggerAll as log
+
 
 @dataclass
 class Command:
     msgID: str
     msgPayload: str
     msgCommand: str
-    #{
-    #"msgCommand":"",
-    #"msgID":"".
-    #"msgPayload":""
+    #command example
+    # {
+    # "msgCommand":"",
+    # "msgID":"".
+    # "msgPayload":""
     # }
-    def __init__(self, string_format_command):
-        print(f"Попытка разобрать команду: {string_format_command}")  # Логируем строку  #todo логирование через класс логгеров с разным уровнем
+    CMD_msg_ID = 'msgID'
+    CMD_msg_payload = 'msgPayload'
+    CMD_command = 'msgCommand'
 
+    def __init__(self, string_format_command):
+        log.logger.info(f"Попытка разобрать команду: {string_format_command}")
         data = json.loads(string_format_command)
-        self.msgCommand=data['msgCommand']
+        self.msgCommand = data['msgCommand']
         self.msgID = data['msgID']
         self.msgPayload = data['msgPayload']
-    def get(self): #todo форматирование
+
+    def get(self):
         map = {
-            'msgID': self.msgID, #todo стровоые константы вынести в констаннтый модуль
-            'msgPayload': self.msgPayload,
-            'msgCommand': self.msgCommand
+            self.CMD_msg_ID: self.msgID,
+            self.CMD_msg_payload: self.msgPayload,
+            self.CMD_command: self.msgCommand
         }
         return json.dumps(map)
 

@@ -7,9 +7,14 @@ from interfaces import messagesInterface
 from interfaces.CommandStructure import Command
 
 class CommandGetXML(messagesInterface.MessageInterface):
+    """
+    CommandGetJSON: команда для возврата данных в формате XML.
 
+    Описание:
+    - Принимает объект команды (`mapa`).
+    - Обрабатывает данные и возвращает их в формате XML.
+    """
     def __init__(self, mapa):
-        """***this command will return XML format from data***"""
         super().__init__(mapa)
         pass
 
@@ -17,7 +22,7 @@ class CommandGetXML(messagesInterface.MessageInterface):
         # print(self.command)
         # oroginal command ->self.command
         tmp: ReturningData = ReturningData()
-        tmp.getDataFormatXML()
+        tmp.get_data_formatXML()
         self.command.msgPayload = tmp.datapayload
         answer = self.command
         return answer

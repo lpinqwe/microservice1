@@ -2,13 +2,14 @@ import os
 import os
 import threading
 import uuid
-
+from utils.Logger import LoggerAll as log
 import pika
 
 import decor.singletone
 from interfaces.CommandStructure import Command
 from utils.Factory import Factory
 
+from config.RabbitMQConfig import RabbitMQConfig as RMQC
 
 @decor.singletone.singleton
 class RabbitRabbit:
@@ -16,12 +17,12 @@ class RabbitRabbit:
     def __init__(self, factory: Factory):
         self.factory = factory
         self.properties = pika.BasicProperties(expiration='60000')
-        self.credentials = pika.PlainCredentials(username=os.getenv('RABBITMQ_USER'.upper(), 'guest'),
-                                                 #todo настройки через отдельный класс или константы. иначе не понять что где используется
-                                                 password=os.getenv('RABBITMQ_pass'.upper(), 'guest'))
+        self.credentials = pika.PlainCredentials(username=RMQC.username,
+                                                 password=RMQC.password
+                                            )
 
-        self.connection_param = pika.ConnectionParameters(host=os.getenv('rabbit_localhost'.upper(), '127.0.0.1'),
-                                                          port=os.getenv('rabbit_port'.upper(), 5672),
+        self.connection_param = pika.ConnectionParameters(host=RMQC.host,
+                                                          port=RMQC.port,
                                                           credentials=self.credentials
                                                           )
 
@@ -29,8 +30,8 @@ class RabbitRabbit:
 
         self.channel = self.connection.channel()
 
-        self.publishQue = os.getenv('rabbitQue1'.upper(), 'getQ1')
-        self.watcherQue = os.getenv('rabbitQue2'.upper(), 'getQ2')
+        self.publishQue = RMQC.publishQue
+        self.watcherQue = RMQC.watcherQue
         self.channel.queue_declare(queue=self.publishQue)
         self.channel.queue_declare(queue=self.watcherQue)
 
@@ -53,11 +54,12 @@ class RabbitRabbit:
             tmp = body.decode()
 
             tmp = Command(tmp)
-            print(e) #todo логирование
-            print(tmp)
+
+            log.logger.info(e)
+            log.logger.info(tmp)
 
     def sendMessage(self, msg: Command):
-        print(msg.msgID) #todo
+        log.logger.info(msg.msgID)
         self.channel.queue_declare(queue=msg.msgID, durable=False)
         self.channel.basic_publish(
             exchange='',
